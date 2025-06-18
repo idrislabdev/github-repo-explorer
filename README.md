@@ -58,6 +58,7 @@ src/
 ├── services/
 ├── types/
 ├── styles/
+├── utils/
 ├── App.tsx
 ├── App.test.tsx
 └── index.tsx
