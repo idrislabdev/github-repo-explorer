@@ -47,7 +47,7 @@ Unit and integration testing can be added using:
 ## 🌍 Live Demo
 
 Access the live demo here:  
-👉 [https://your-username.github.io/github-repo-explorer](https://your-username.github.io/github-repo-explorer)
+👉 [https://github-repo-explorer-azure.vercel.app/](https://github-repo-explorer-azure.vercel.app/)
 
 ## 📁 Folder Structure
 

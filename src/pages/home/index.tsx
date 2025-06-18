@@ -51,6 +51,11 @@ export const Home = () => {
                             onChange={e => setUserName(e.target.value)}
                             placeholder='Enter username'
                             className={`w-full h-[44px] text-base rounded-[4px] px-[8px] outline-none bg-gray-200 border border-gray-300 ${erroMsg !== '' ? 'border-red-600' : ''}`}
+                            onKeyDown={e => {
+                                if (e.key === 'Enter') {
+                                    fetchData();
+                                }
+                            }}
                         />
                         {erroMsg !== '' && <span className='text-sm text-red-600 italic'>{erroMsg}</span>}
                         {userName.length > 0 && 

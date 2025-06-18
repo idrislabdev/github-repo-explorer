@@ -113,6 +113,23 @@ describe('App Component', () => {
       expect(searchUsers).toHaveBeenCalledWith('rifai');
     });
   });
+
+  test('should call searchUsers when pressing Enter key in input', async () => {
+    (searchUsers as jest.Mock).mockResolvedValueOnce({ data: { items: [] } });
+
+    render(<App />);
+
+    const input = screen.getByPlaceholderText(/enter username/i);
+
+    fireEvent.change(input, { target: { value: 'rifai' } });
+
+    // Simulasi tekan Enter
+    fireEvent.keyDown(input, { key: 'Enter', code: 'Enter' });
+
+    await waitFor(() => {
+      expect(searchUsers).toHaveBeenCalledWith('rifai');
+    });
+  });
 });
 
 
