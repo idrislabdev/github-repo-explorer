@@ -1,46 +1,81 @@
-# Getting Started with Create React App
+# GitHub Repositories Explorer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a React + TypeScript application that integrates with the [GitHub REST API v3](https://developer.github.com/v3/). It allows users to search for up to 5 GitHub users based on a typed username and explore their public repositories.
 
-## Available Scripts
+## ✨ Features
 
-In the project directory, you can run:
+- Search for GitHub users (maximum 5 similar matches)
+- View public repositories of selected users
+- Display repository details (name, description, stars)
+- Responsive and accessible design
+- Error handling and loading states
+- Hosted publicly via GitHub Pages
 
-### `npm start`
+## 📦 Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- React
+- TypeScript
+- Axios (or Fetch API)
+- Tailwind CSS (or any other styling library)
+- GitHub Pages (for deployment)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 🚀 Getting Started
 
-### `npm test`
+### Installation
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```bash
+git clone https://github.com/your-username/github-repo-explorer.git
+cd github-repo-explorer
+npm install
+npm start
+```
 
-### `npm run build`
+### Scripts
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- `npm start` – Runs the app in development mode
+- `npm run build` – Builds the app for production
+- `npm run deploy` – Deploys the app to GitHub Pages (if configured)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🧪 Testing (Optional)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Unit and integration testing can be added using:
 
-### `npm run eject`
+- [Jest](https://jestjs.io/)
+- [React Testing Library](https://testing-library.com/docs/react-testing-library/intro)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 🌍 Live Demo
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Access the live demo here:  
+👉 [https://your-username.github.io/github-repo-explorer](https://your-username.github.io/github-repo-explorer)
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## 📁 Folder Structure
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+src/
+├── components/
+├── pages/
+├── services/
+├── types/
+├── utils/
+├── App.tsx
+└── index.tsx
+```
 
-## Learn More
+## 📋 Requirements
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- React with TypeScript
+- Public GitHub repository
+- App hosted and publicly accessible
+- Proper README provided
+- Errors handled appropriately
+- Good UX practices (keyboard support, loading states)
+- Use only English
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 📱 Tips
+
+- Don’t forget about mobile responsiveness
+- Use the project to showcase your best front-end skills
+
+## 📄 License
+
+This project is licensed under the MIT License.
