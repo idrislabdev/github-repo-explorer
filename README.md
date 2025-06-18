@@ -35,6 +35,7 @@ npm start
 - `npm start` – Runs the app in development mode
 - `npm run build` – Builds the app for production
 - `npm run deploy` – Deploys the app to GitHub Pages (if configured)
+- `npm run test` – Runs test
 
 ## 🧪 Testing (Optional)
 
@@ -56,8 +57,9 @@ src/
 ├── pages/
 ├── services/
 ├── types/
-├── utils/
+├── styles/
 ├── App.tsx
+├── App.test.tsx
 └── index.tsx
 ```
 
