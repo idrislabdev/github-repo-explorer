@@ -24,7 +24,7 @@ This is a React + TypeScript application that integrates with the [GitHub REST A
 ### Installation
 
 ```bash
-git clone https://github.com/your-username/github-repo-explorer.git
+git clone https://github.com/idrislabdev/github-repo-explorer.git
 cd github-repo-explorer
 npm install
 npm start

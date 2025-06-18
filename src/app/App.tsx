@@ -1,8 +1,10 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { IUserName } from './interface';
-import { ChevronIconDown, StarIcon, TimesCirlceIcon } from './icons';
-import axios, { AxiosError } from 'axios';
-// import { IUserName } from './interface'
+import { IUserName } from '../types/interface';
+import { TimesCirlceIcon } from '../assets/icons';
+import { AxiosError } from 'axios';
+import { searchUsers } from '../services/github';
+import UserCard from '../components/user-card';
+import { SpinnerLoading } from '../components/loading';
 
 function App() {
   const [userName, setUserName] = useState("");
@@ -13,7 +15,7 @@ function App() {
   const fetchData = useCallback(() => {
    setIsHit(true)
     setIsLoading(true)
-    axios.get(`https://api.github.com/search/users?q=${userName}`)
+    searchUsers(userName)
     .then((resp) => {
       const data = resp.data
       setIsLoading(false)
@@ -30,21 +32,6 @@ function App() {
     })
 
   }, [setUserNames, userName])
-
-
-  const onChangeShow = async (item:IUserName) => {
-
-    const temp = [...userNames]
-    const check = userNames.find((x) => x.id === item.id)
-    if (check) {
-      check.show  = !check.show 
-      if (!check.repos) {
-        const resp = await axios.get(`https://api.github.com/users/${item.login}/repos`)
-        check.repos = resp.data
-      }
-    }
-    setUserNames(temp)
-  }
 
   useEffect(() => {
     setErrorMsg('')
@@ -80,39 +67,8 @@ function App() {
         <div className='flex flex-col gap-[16px] overflow-auto flex-1'>
           {userNames.length > 0 && <h5 className='text-neutral-700 text-base'>Showing users for "{userName}"</h5>}
           {isHit  && userNames.length === 0 && !isLoading && <h5 className='text-neutral-700 text-base'>No result found</h5>}
-          <ul className='flex flex-col'>
-            {userNames.map((item, index:number) => (
-              <li className='flex flex-col gap-[10px]' key={index}>
-                <button type="button" className='w-full' onClick={() => onChangeShow(item)}>
-                  <div className="flex items-center justify-between bg-gray-200 p-[8px]"> 
-                    <label className='text-neutral-900'>{item.login}</label> 
-                    <span className={item.show ? 'transform rotate-180' : ''}>
-                      <ChevronIconDown color={'#000'} />
-                    </span>
-                  </div>
-                </button>
-                <div className={`flex flex-col gap-[10px] overflow-auto pl-[20px] relativ transition-all duration-700 ${item.show? `max-h-[800px]` : 'max-h-0'}`}>
-                    {item.repos && item.repos.map((repo, indexRepo:number) => (
-                      <div className="flex justify-between bg-gray-300 p-[8px] items-start" key={`${index}.${indexRepo}`}>
-                        <div className='flex flex-col gap-[8px] flex-1'>
-                          <label className='text-[18px]/[21px] font-bold'>{repo.name}</label>
-                          <p className='text-[14px]/[17px]'>{repo.description}</p>
-                        </div>
-                        <div className='flex items-center justify-end gap-[4px] w-[40px]'>
-                          <span>{repo.stargazers_count}</span>
-                          <span className=''><StarIcon color={'#000'} /></span>
-                        </div>
-                      </div>
-                    ))}   
-                </div>
-            </li>
-            ))}
-          </ul>
-          {isLoading &&
-            <div className="w-full h-full flex flex-col items-center justify-center">
-              <div className="loading"></div>
-            </div>
-          }
+          <UserCard setUserNames={setUserNames} userNames={userNames} />
+          {isLoading && <SpinnerLoading />}
         </div>
       </div>
       
